@@ -5,6 +5,20 @@ fix, and I write down what actually happened rather than what was supposed to.
 
 ## Projects
 
+**[devcheck](https://github.com/fsix7115-arch/devcheck)** — is your dev machine
+healthy, or just populated? No dependencies, read-only, safe in CI.
+
+The failure it exists for: Cloudflare answers Groq with `error code: 1010` to
+any client that does not send a browser `User-Agent`, which includes
+`urllib` and `curl`'s default. The tool is installed, the key is valid, the
+call still fails, and the error says nothing about keys, so it reads as "my
+credentials are wrong" and sends you off to regenerate a working key. devcheck
+sends the same request twice, bare and with a User-Agent, and reports the
+difference as a property of your network rather than your account.
+
+It also flags version floors that actually break workflows, and reports real
+free disk space, which explains more strange failures than it has any right to.
+
 **[freellm-probe](https://github.com/fsix7115-arch/freellm-probe)** — find out
 which free LLM APIs work from your machine, right now. No dependencies.
 
